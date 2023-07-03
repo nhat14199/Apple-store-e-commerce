@@ -9,9 +9,6 @@ function Home() {
   return (
     <>
       <BrandsList />
-      <ProductList />
-      <MidlleBanner />
-      <ListFarvoriteProduct />
     </>
   );
 }
