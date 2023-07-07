@@ -9,15 +9,9 @@ import CardMedium from "./components/Card/CardMedium";
 import CardShapeSquare from "./components/Card/CardShapeSquare";
 import ListFarvoriteProduct from "./containers/home/components/ListFarvoriteProduct";
 import Card from "./components/Card";
+import Carousel from "./components/Carousel";
 
 function App() {
-  const [img, setImg] = useState<string>("");
-  const [product, setProduct] = useState<string>("");
-  const [discribe, setDiscribe] = useState<string>("");
-  const [price, setPrice] = useState<string>("");
-  const [typeImg, setTypeImg] = useState<number>(0);
-  const [index, setIndex] = useState<number>(0);
-
   const data = [
     {
       image:
@@ -284,6 +278,12 @@ function App() {
       image:
         "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-card-40-hermes-202303?wid=680&hei=528&fmt=jpeg&qlt=90&.v=1676335512238",
     },
+    {
+      name: "new modal",
+      price: "From $199 $21.62mo.per",
+      image:
+        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-card-40-acc-202303?wid=800&hei=1000&fmt=jpeg&qlt=90&.v=1676583158437",
+    },
   ];
 
   return (
@@ -315,6 +315,9 @@ function App() {
         <div className="pt-10">
           {" "}
           <Footer />
+        </div>
+        <div className="mt-10">
+          <Carousel />
         </div>
       </div>
     </div>
