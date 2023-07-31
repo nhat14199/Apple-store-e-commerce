@@ -10,6 +10,9 @@ import CardShapeSquare from "./components/Card/CardShapeSquare";
 import ListFarvoriteProduct from "./containers/home/components/ListFarvoriteProduct";
 import Card from "./components/Card";
 import Carousel from "./components/Carousel";
+import { log } from "console";
+import { ProductService } from "./services/products";
+import BelieveMySelf from "./containers/Page/BelieveMySelf";
 
 function App() {
   const data = [
@@ -285,7 +288,18 @@ function App() {
         "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-card-40-acc-202303?wid=800&hei=1000&fmt=jpeg&qlt=90&.v=1676583158437",
     },
   ];
-
+  const [iphoneList, setIphoneList] = useState<any>([]);
+  const getApi = async () => {
+    try {
+      const reps = await ProductService.getListProductIphone();
+      setIphoneList(reps.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getApi();
+  }, []);
   return (
     <div className="App">
       <div className="bg-slate-50">
@@ -309,9 +323,9 @@ function App() {
           {" "}
           <Card data={dataAppleWatch} />
         </div>
-        <CardMedium data={data} />
+        <CardMedium data={iphoneList} />
         <CardShapeSquare />
-        <CardMedium data={newData} />
+        {/* <CardMedium props={newData} /> */}
         <div className="pt-10">
           {" "}
           <Footer />
@@ -319,6 +333,9 @@ function App() {
         <div className="mt-10">
           <Carousel />
         </div>
+      </div>
+      <div>
+        <BelieveMySelf />
       </div>
     </div>
   );

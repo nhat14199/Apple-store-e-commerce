@@ -1,85 +1,17 @@
 import React from "react";
 
-function CardMedium(props: any) {
-  //   {
-  //     image:
-  //       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-iphone-14-pro-202303?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1677311465897",
-  //     product: "IPhone 14 Pro",
-  //     discribe: "Pro. Beyond.",
-  //     price:
-  //       "From $999 or $41.62/mo.per month for 24 mo.months before trade‑inFootnote ",
-  //     type: 1,
-  //   },
-  //   {
-  //     image:
-  //       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-macbook-air-202306?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1683844828182",
-  //     product: "MACBOOK AIR 15”",
-  //     discribe: "Impressively big. Impossibly thin.",
-  //     price:
-  //       "From $999 or $41.62/mo.per month for 24 mo.months before trade‑inFootnote ",
-  //     type: 2,
-  //   },
+interface MyComponentProps {
+  data: any;
+}
 
-  //   {
-  //     image:
-  //       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-bts-202306?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1685655505966",
-  //     product: "LIMITED TIME OFFER”",
-  //     discribe: "Save on Mac or iPad for college.",
-  //     price:
-  //       "Save on Mac or iPad with education pricing. Plus get a gift card up to $150,footnote1 20% off AppleCare+,2 and more.",
-  //     type: 2,
-  //   },
-  //   {
-  //     image:
-  //       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-ipad-air-202203?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1645636337374",
-  //     product: "iPad Air”",
-  //     discribe: "Light. Bright. Full of might.",
-  //     price: "From $599 or $49.91/mo.per month for 12 mo.monthsFootnote* ",
-  //     type: 1,
-  //   },
-  //   {
-  //     image:
-  //       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-watch-ultra-202209?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1660686053448",
-  //     product: "APPLE WATCH ULTRA”",
-  //     discribe: "Adventure awaits.",
-  //     price: "From $799 or $33.29/mo.per month for 24 mo.monthsFootnote†",
-  //     type: 2,
-  //   },
-  //   {
-  //     image:
-  //       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-watch-se-pride-202305?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1682613104261",
-  //     product: "PRIDE EDITION SPORT BAND",
-  //     discribe: "Pride is in the air..",
-  //     price: "From $49 or",
-  //     type: 2,
-  //   },
-  //   {
-  //     image:
-  //       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-iphone-14-202303_GEO_US?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1677558944069",
-  //     product: "IPHONE 14",
-  //     discribe: "Wonderfull.",
-  //     price:
-  //       "From $799 or $33.29/mo.per month for 24 mo.months before trade‑inFootnote*",
-  //     type: 2,
-  //   },
-  //   {
-  //     image:
-  //       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-watch-s8-202303?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1677224522003",
-  //     product: "APPLE WATCH SERIES 8",
-  //     discribe: "A healthy leap ahead.",
-  //     price: "From $399 or $16.62/mo.per month for 24 mo.monthsFootnote†",
-  //     type: 1,
-  //   },
-  //   {
-  //     image:
-  //       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-40-ipad-pro-202210?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1667423474414",
-  //     product: "IPAD PRO",
-  //     discribe: "Supercharged by M2.",
-  //     price: "From $799 or $66.58/mo.per month for 12 mo.monthsFootnote†",
-  //     type: 1,
-  //   },
-  // ];
+/*
+ Nếu là js thì 
+  MyComponent.propTypes = {
+  name: PropTypes.string.isRequired, // Yêu cầu name là một chuỗi
+};
+*/
 
+export const CardMedium: React.FC<MyComponentProps> = (props) => {
   return (
     <div className="pt-10">
       <div className="text-left pl-[320px] flex">
@@ -99,7 +31,7 @@ function CardMedium(props: any) {
         <div
           className="flex flex-row flex-nowrap"
           style={{
-            width: `${props.data.length * 400}px`,
+            width: `${props.data?.length * 400}px`,
           }}
         >
           {props.data.map((e: any, index: number) => (
@@ -133,7 +65,7 @@ function CardMedium(props: any) {
       </div>
     </div>
   );
-}
+};
 export default CardMedium;
 
 /*
