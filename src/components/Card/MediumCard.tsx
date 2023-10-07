@@ -4,14 +4,9 @@ interface MyComponentProps {
   data: any;
 }
 
-/*
- Nếu là js thì 
-  MyComponent.propTypes = {
-  name: PropTypes.string.isRequired, // Yêu cầu name là một chuỗi
-};
-*/
+export const MediumCard: React.FC<MyComponentProps> = (props: any) => {
+  console.log("props", props);
 
-export const CardMedium: React.FC<MyComponentProps> = (props) => {
   return (
     <div className="pt-10">
       <div className="text-left pl-[320px] flex">
@@ -43,7 +38,7 @@ export const CardMedium: React.FC<MyComponentProps> = (props) => {
               }}
             >
               <div
-                className={`translate-x-[320px] hover:scale-[1.01] mr-[20px] w-[400px] hover:bg-opacity-90  relative shadow-md rounded-2xl border border-gray-300  hover:shadow-xl duration-500 ${
+                className={`translate-x-[320px] hover:scale-[1.01] mr-[20px] w-[400px] h-[497px] hover:bg-opacity-90  relative shadow-md rounded-2xl border border-gray-300  hover:shadow-xl duration-500 ${
                   e.type == 2 ? "text-gray-950" : "text-white"
                 } `}
               >
@@ -54,8 +49,8 @@ export const CardMedium: React.FC<MyComponentProps> = (props) => {
                   alt=""
                 />
                 <div className="absolute  top-4 left-10 flex flex-col text-left max-w-[300px]">
-                  <h1 className="text-xs font-normal py-1">{e.product}</h1>
-                  <h1 className="text-xl font-normal">{e.discribe}</h1>
+                  <h1 className="text-sm font-normal py-1">{e.product}</h1>
+                  <h1 className="text-2xl font-normal">{e.discribe}</h1>
                   <h1 className="text-sm font-light py-1">{e.price}</h1>
                 </div>
               </div>
@@ -66,7 +61,7 @@ export const CardMedium: React.FC<MyComponentProps> = (props) => {
     </div>
   );
 };
-export default CardMedium;
+export default MediumCard;
 
 /*
 max-width xác định giá trị tối đa của chiều rộng mà một phần tử có thể mở rộng.

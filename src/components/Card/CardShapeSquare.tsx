@@ -1,49 +1,21 @@
 import React from "react";
+interface MyComponentProps {
+  data: any;
+  title: string;
+  titleTwo: string;
+}
 
-function CardShapeSquare() {
-  const data = [
-    {
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-50-specialist-help-202303?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1678742761914",
-      product: "Shop with a Specialist over video.",
-      discribe: "Shop one on one with a Specialist. Online or in a store.",
-      price: "Choose your next iPhone in a guided, one-way video session.",
-      type: 1,
-    },
-    {
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-specialist-help-202305?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1684946879038",
-      product: "APPLE SPECIALIST",
-      discribe: "Shop one on one with a Specialist. Online or in a store.",
-      price: "",
-      type: 2,
-    },
-    {
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-tv-services-202303?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1679429097366",
-      product: "APPLE TV+",
-      discribe: "Get 3 months of Apple TV+ free when you buy an Apple device.",
-      price: "Choose your next iPhone in a guided, one-way video session.",
-      type: 1,
-    },
-    {
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-50-subscriptions-202108_GEO_US?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1626375546000",
-      product: "",
-      discribe:
-        "Six Apple services. One easy subscription.- (Opens in a new window)",
-      price: "",
-      type: 2,
-    },
-  ];
+export const CardShapeSquare: React.FC<MyComponentProps> = (props: any) => {
+  const { data, title, titleTwo } = props;
+  console.log("data", data);
+  console.log("title", title);
+  console.log("titleTwo", titleTwo);
+
   return (
     <div className="mt-5">
       <div className="text-left pl-[320px] flex">
-        <h1 className="text-3xl font-semibold pr-2">Help is here .</h1>{" "}
-        <h1 className="text-3xl font-semibold text-slate-500">
-          {" "}
-          Whennever and however you need it
-        </h1>
+        <h1 className="text-3xl font-semibold pr-2">{title}</h1>{" "}
+        <h1 className="text-3xl font-semibold text-slate-500"> {titleTwo}</h1>
       </div>
       <div
         className="overflow-x-scroll py-6 scrollbar-hide"
@@ -58,7 +30,7 @@ function CardShapeSquare() {
             width: `${data.length * 480}px`,
           }}
         >
-          {data.map((e, index) => (
+          {data.map((e: any, index: number) => (
             <div
               className="pt-2 "
               key={index}
@@ -89,5 +61,5 @@ function CardShapeSquare() {
       </div>
     </div>
   );
-}
+};
 export default CardShapeSquare;
