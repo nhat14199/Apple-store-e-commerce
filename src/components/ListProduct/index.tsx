@@ -1,4 +1,6 @@
-const BrandsList = () => {
+import React from "react";
+
+export const ListProduct = () => {
   const data = [
     {
       logo: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-14-16-mac-nav-202301?wid=400&hei=260&fmt=png-alpha&.v=1670959891635",
@@ -64,4 +66,4 @@ const BrandsList = () => {
     </div>
   );
 };
-export default BrandsList;
+export default ListProduct;

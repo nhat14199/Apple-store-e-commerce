@@ -7,9 +7,6 @@ interface MyComponentProps {
 
 export const CardShapeSquare: React.FC<MyComponentProps> = (props: any) => {
   const { data, title, titleTwo } = props;
-  console.log("data", data);
-  console.log("title", title);
-  console.log("titleTwo", titleTwo);
 
   return (
     <div className="mt-5">

@@ -2,18 +2,6 @@ import React, { memo } from "react";
 import Rating from "../Rate";
 
 const Card = (data: any) => {
-  const handleRatingChange = (rating: number | null) => {
-    // Xử lý logic khi đánh giá thay đổi
-    console.log("Đánh giá mới:", rating);
-  };
-  // console.log(
-  //   "data",
-  //   data.data.map((e: any, index: any) => {
-  //     console.log("eeee", e);
-  //     console.log("index ", index);
-  //   })
-  // );
-
   return (
     <div
       className="overflow-x-scroll scrollbar-hide py-6"

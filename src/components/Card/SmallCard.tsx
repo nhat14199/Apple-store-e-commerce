@@ -4,16 +4,7 @@ interface MyComponentProps {
   data: any;
 }
 
-/*
- Nếu là js thì 
-  MyComponent.propTypes = {
-  name: PropTypes.string.isRequired, // Yêu cầu name là một chuỗi
-};
-*/
-
 export const SmallCard: React.FC<MyComponentProps> = (props: any) => {
-  console.log("propsprops", props);
-
   return (
     <div className="pt-10 bg-gray-50">
       <div className="text-left pl-[320px] flex">
