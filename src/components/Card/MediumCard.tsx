@@ -2,19 +2,18 @@ import React from "react";
 
 interface MyComponentProps {
   data: any;
+  titleOne: string;
+  titleTwo: string;
 }
 
 export const MediumCard: React.FC<MyComponentProps> = (props: any) => {
-  console.log("props", props);
+  const { data, titleOne, titleTwo } = props;
 
   return (
     <div className="pt-10">
       <div className="text-left pl-[320px] flex">
-        <h1 className="text-3xl font-semibold pr-2">The latest.</h1>{" "}
-        <h1 className="text-3xl font-semibold text-slate-500">
-          {" "}
-          Take a look at what’s new, right now.
-        </h1>
+        <h1 className="text-3xl font-semibold pr-2">{titleOne}</h1>{" "}
+        <h1 className="text-3xl font-semibold text-slate-500"> {titleTwo}</h1>
       </div>
       <div
         className="overflow-x-scroll scrollbar-hide py-6"
@@ -26,10 +25,10 @@ export const MediumCard: React.FC<MyComponentProps> = (props: any) => {
         <div
           className="flex flex-row flex-nowrap"
           style={{
-            width: `${props.data?.length * 400}px`,
+            width: `${data?.length * 400}px`,
           }}
         >
-          {props.data.map((e: any, index: number) => (
+          {data.map((e: any, index: number) => (
             <div
               className="pt-2 "
               key={index}

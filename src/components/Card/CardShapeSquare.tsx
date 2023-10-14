@@ -48,7 +48,7 @@ export const CardShapeSquare: React.FC<MyComponentProps> = (props: any) => {
                 />
                 <div className="absolute  top-4 left-10 flex flex-col text-left max-w-[400px]">
                   <h1 className="text-xs font-normal py-1">{e.product}</h1>
-                  <h1 className="text-xl font-normal">{e.discribe}</h1>
+                  <h1 className="text-2xl font-medium">{e.discribe}</h1>
                   <h1 className="text-sm font-light py-1">{e.price}</h1>
                 </div>
               </div>

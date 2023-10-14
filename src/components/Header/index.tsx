@@ -7,7 +7,7 @@ import {
 
 export const Header = () => {
   return (
-    <div className="w-full h-auto bg-slate-100 text-gray-800 font-light pb-2 pt-1 hover:text-gray-900 cursor-pointer">
+    <div className="w-full h-auto bg-slate-100 text-gray-800 font-light pt-1 hover:text-gray-900 cursor-pointer">
       <div className=" pt-4 pb-2 flex justify-around ">
         <div className="grid grid-cols-12 gap-10 sm:flex ">
           <span className="col-span-1 text-xl mb-2  ">
@@ -22,7 +22,7 @@ export const Header = () => {
           <span className="col-span-1 text-sm">TV & Home</span>
           <span className="col-span-1 text-sm">Entertainment</span>
           <span className="col-span-1 text-sm">Accessories</span>
-
+          <span className="col-span-1 text-sm">Support</span>
           <span className="col-span-1 text-sm">
             <AiOutlineShoppingCart className="ml-4 mt-[0.5] text-xl" />
           </span>

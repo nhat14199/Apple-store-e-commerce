@@ -31,7 +31,7 @@ export const ListProduct = () => {
     },
   ];
   return (
-    <div className="mt-10 pb-4 mx-80">
+    <div className="pt-14 pb-4 mx-80">
       <div className="flex justify-between w-full">
         {" "}
         <div className="text-4xl font-light text-left flex w-1/2  ">
@@ -39,7 +39,7 @@ export const ListProduct = () => {
             Store. The best way to buy the products you love.
           </div>{" "}
         </div>
-        <div className="w-1/5 p-2 flex justify-around">
+        <div className="w-1/5 p-2 flex justify-around ">
           <img
             src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-chat-specialist-icon-202305_AV2?wid=70&hei=70&fmt=jpeg&qlt=90&.v=1684947928853"
             alt=""

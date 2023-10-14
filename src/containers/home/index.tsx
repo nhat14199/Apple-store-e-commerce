@@ -149,81 +149,9 @@ function Home() {
       type: 2,
     },
   ];
-  const dataIphone = [
-    {
-      name: "iPhone 14 Pro & iPhone 14 Pro Max",
-      price:
-        " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-iphone14pro-202209?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1663611329492",
-    },
-    {
-      name: "iPhone 14 & iPhone 14 Plus",
-      price:
-        " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-iphone14-202209?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1661958160674",
-    },
-    {
-      name: "iPhone 13 mini & iPhone 13",
-      price:
-        " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-iphone13-202209?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1661958176452",
-    },
-    {
-      name: "iPhone 12",
-      price:
-        " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-iphone12-202209?wid=680&hei=528&fmt=jpeg&qlt=90&.v=1661958189616",
-    },
-  ];
+
   const dataIphonee = [];
-  const dataMac = [
-    {
-      name: "MacBook Air 13” and 15” with M2 chip",
-      price:
-        " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mac-card-40-macbook-air-13-15-202306?wid=1200&hei=1000&fmt=p-jpg&qlt=95&.v=1684262493564",
-    },
-    {
-      name: "MacBook Pro 14” and 16”",
-      price:
-        " From $1999or $413.62/mo.per month for 24 mo.months before trade‑inFootnote*",
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mac-card-40-macbook-pro-14-16-202301?wid=1200&hei=1000&fmt=p-jpg&qlt=95&.v=1670463778272",
-    },
-    {
-      name: "iMac 24”",
-      price:
-        " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mac-card-40-imac-24-202108?wid=980&hei=1000&fmt=jpeg&qlt=90&.v=1625868688000",
-    },
-    {
-      name: "Mac mini",
-      price:
-        " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mac-card-40-mac-mini-202301?wid=1200&hei=1000&fmt=p-jpg&qlt=95&.v=1670549737872",
-    },
-    {
-      name: "iMac 24”",
-      price:
-        " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mac-card-40-imac-24-202108?wid=980&hei=1000&fmt=jpeg&qlt=90&.v=1625868688000",
-    },
-    {
-      name: "Mac mini",
-      price:
-        " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
-      image:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mac-card-40-mac-mini-202301?wid=1200&hei=1000&fmt=p-jpg&qlt=95&.v=1670549737872",
-    },
-  ];
+
   const dataMacc = [];
   const dataIpad = [
     {
@@ -611,17 +539,19 @@ function Home() {
     " Essentials that pair perfectly with your favorite devices.";
   return (
     <div className="bg-slate-50">
-      <Header />
       <ListProduct />
-      <MediumCard data={data} />
+      <MediumCard
+        data={data}
+        titleTwo={"Take a look at what’s new, right now."}
+        titleOne={"The latest"}
+      />
       <CardShapeSquare
         data={whenever}
         title={titleWhenever}
         titleTwo={titleTwo}
       />
-      {/* <Card data={dataIphone} />
-        <Card data={dataAppleWatch} />
-        <Card data={dataMac} />
+
+      {/* <Card data={dataAppleWatch} />
         <Card data={dataIpad} /> */}
       <SmallCard data={trucks} />
       <ShapeSquare
@@ -639,8 +569,11 @@ function Home() {
         title={titleExperinence}
         titleTwo={titleExperinenceTwo}
       />
-      <MediumCard data={newData} />
-      <Footer />
+      <MediumCard
+        data={newData}
+        titleTwo={"Exclusive savings for businesses, school, and more."}
+        titleOne={"Special stores."}
+      />
     </div>
   );
 }

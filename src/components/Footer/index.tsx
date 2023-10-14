@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="">
-      <div className="mt-10 w-full mb-5 text-gray-700 ">
+    <div className=" bg-slate-50">
+      <div className="pt-10 w-full mb-5 text-gray-700 ">
         <div className="h-0.5 bg-slate-300 mx-80 mb-4"></div>
         <div className="mx-80 flex justify-between ">
           <div className="grid grid-row gap-1 text-left text-xs p-1 hover:text-gray-900 cursor-pointer ">
