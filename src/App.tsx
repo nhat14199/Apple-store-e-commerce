@@ -11,16 +11,20 @@ import ShopMac from "./containers/shopMacs";
 import ShopPhones from "./containers/shopPhones";
 import ShopIpads from "./containers/shopIpads";
 import ProductDetail from "./components/ProductDetail";
+import ShopWatchs from "./containers/shopWatchs";
+import ShopAirPods from "./containers/shopAirPods";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      {/* <Home />
-      <ShopMac />
-      <ShopPhones /> */}
-      <ProductDetail />
-      {/* <ShopIpads/> */}
+      {/* <Home /> */}
+      {/* <ShopMac /> */}
+      {/* <ShopPhones /> */}
+      {/* <ProductDetail /> */}
+      {/* <ShopIpads /> */}
+      <ShopWatchs />
+      {/* <ShopAirPods /> */}
       <Footer />
     </div>
   );

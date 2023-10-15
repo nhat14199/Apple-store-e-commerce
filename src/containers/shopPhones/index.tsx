@@ -193,7 +193,6 @@ export const shopPhones = () => {
       type: 2,
     },
   ];
-  const Accessorie = [];
   const Accessories = [
     {
       image:
