@@ -6,6 +6,8 @@ interface MyComponentProps {
   titleTwo: string;
 }
 const Card: React.FC<MyComponentProps> = (props: any) => {
+  console.log("id", props);
+
   const { data, title, titleTwo } = props;
   return (
     <div>
@@ -54,9 +56,11 @@ const Card: React.FC<MyComponentProps> = (props: any) => {
                   <span className="max-w-[250px] text-sm" key={index}>
                     {e.price}
                   </span>
-                  <button className="bg-blue-500 w-14 h-8 p-1 text-white font-light text-center rounded-3xl cursor-pointer hover:bg-blue-600">
-                    Buy
-                  </button>
+                  <a href={`/checkout`}>
+                    <button className="bg-blue-500 w-14 h-8 p-1 text-white font-light text-center rounded-3xl cursor-pointer hover:bg-blue-600">
+                      Buy
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>

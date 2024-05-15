@@ -4,15 +4,19 @@ export const ListProduct = () => {
   const data = [
     {
       logo: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-14-16-mac-nav-202301?wid=400&hei=260&fmt=png-alpha&.v=1670959891635",
+      path: "/shop/buy-mac",
     },
     {
       logo: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-iphone-nav-202209_GEO_US?wid=400&hei=260&fmt=png-alpha&.v=1661027785546",
+      path: "/shop/buy-iphone",
     },
     {
       logo: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-ipad-nav-202210?wid=400&hei=260&fmt=png-alpha&.v=1664912135437",
+      path: "/shop/buy-ipad",
     },
     {
       logo: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303?wid=400&hei=260&fmt=png-alpha&.v=1677701613598",
+      path: "/shop/buy-watch",
     },
     {
       logo: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-accessories-nav-202303?wid=400&hei=260&fmt=png-alpha&.v=1677172796005",
@@ -53,14 +57,16 @@ export const ListProduct = () => {
           </div>
         </div>
       </div>
-      <div className="mt-6 flex justify-between">
+      <div className="mt-6 flex justify-between cursor-pointer">
         {data.map((e, index: number) => (
-          <img
-            src={e.logo}
-            alt=""
-            key={index}
-            className="w-28 h-16 mt-4 mx-2"
-          />
+          <a href={e.path}>
+            <img
+              src={e.logo}
+              alt=""
+              key={index}
+              className="w-28 h-16 mt-4 mx-2"
+            />
+          </a>
         ))}
       </div>
     </div>

@@ -11,13 +11,26 @@ export const Header = () => {
       <div className=" pt-4 pb-2 flex justify-around ">
         <div className="grid grid-cols-12 gap-10 sm:flex ">
           <span className="col-span-1 text-xl mb-2  ">
-            <AiFillApple className=" " />
+            <a href="/">
+              {" "}
+              <AiFillApple className=" " />
+            </a>
           </span>
-          <span className="col-span-1 text-sm">Store</span>
-          <span className="col-span-1 text-sm">Mac</span>
-          <span className="col-span-1 text-sm">Ipad</span>
-          <span className="col-span-1 text-sm">Iphone</span>
-          <span className="col-span-1 text-sm">Watch</span>
+          <span className="col-span-1 text-sm">
+            <a href="/">Store</a>
+          </span>
+          <span className="col-span-1 text-sm">
+            <a href="/shop/buy-iphone">Iphone</a>
+          </span>
+          <span className="col-span-1 text-sm">
+            <a href="/shop/buy-mac">Mac</a>
+          </span>
+          <span className="col-span-1 text-sm">
+            <a href="/shop/buy-ipad">Ipad</a>
+          </span>
+          <span className="col-span-1 text-sm">
+            <a href="/shop/buy-watch">Watch</a>
+          </span>
           <span className="col-span-1 text-sm">AirPods</span>
           <span className="col-span-1 text-sm">TV & Home</span>
           <span className="col-span-1 text-sm">Entertainment</span>
@@ -27,7 +40,7 @@ export const Header = () => {
             <AiOutlineShoppingCart className="ml-4 mt-[0.5] text-xl" />
           </span>
           <span className="col-span-1 text-sm">
-            <AiOutlineUserAdd className="  mt-[0.5] text-xl" />
+            <AiOutlineUserAdd className=" mt-[0.5] text-xl" />
           </span>
         </div>
       </div>

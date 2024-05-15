@@ -42,7 +42,7 @@ interface StarProps {
 }
 
 const Star: React.FC<StarProps> = ({ selected, onClick }) => {
-  return <span onClick={onClick}>{<span>{selected ? "★" : "☆"}</span>}</span>;
+  return <span onClick={onClick}>{<span >{selected ? "★" : "☆"}</span>}</span>;
 };
 
 export default Rating;

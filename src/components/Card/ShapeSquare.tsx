@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { log } from "util";
 
 interface ComponentProps {
   data: any;
@@ -7,6 +8,8 @@ interface ComponentProps {
 }
 
 export const ShapeSquare: React.FC<ComponentProps> = (props: any) => {
+
+
   const { data, titleOne, titleTwo } = props;
   return (
     <div className="pt-10">
@@ -67,10 +70,3 @@ export const ShapeSquare: React.FC<ComponentProps> = (props: any) => {
   );
 };
 export default memo(ShapeSquare);
-
-/*
-justify-center: Điều này căn giữa nội dung theo chiều ngang.
-items-center: Điều này căn giữa nội dung theo chiều dọc.
-
-
-*/
