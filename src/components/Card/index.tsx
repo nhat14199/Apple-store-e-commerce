@@ -6,7 +6,7 @@ interface MyComponentProps {
   titleTwo: string;
 }
 const Card: React.FC<MyComponentProps> = (props: any) => {
-  console.log("id", props);
+
 
   const { data, title, titleTwo } = props;
   return (

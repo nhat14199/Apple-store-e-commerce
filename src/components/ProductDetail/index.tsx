@@ -1,5 +1,10 @@
 import React, { memo } from "react";
 
+
+interface props {
+
+}
+
 export const productDetail = () => {
   return (
     <div>

@@ -15,33 +15,33 @@ import ShopWatchs, { shopWatch } from "./containers/shopWatchs";
 import ShopAirPods from "./containers/shopAirPods";
 import ProductDetailGenaral from "./components/ProductDetailGenaral";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Checkout from "./containers/checkout";
+
+
+
 
 function App() {
   return (
     <div className="App">
-      {/* <ShopPhones /> */}
-      {/* <ProductDetail /> */}
-      {/* <ShopIpads /> */}
-      {/* <ShopWatchs /> */}
-      {/* <ShopAirPods /> */}
-      {/* <ProductDetailGenaral /> */}
+      <div className=" sm:block lg:hidden  ">hello </div>
+      <div className=" sm:hidden lg:block ">
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/shop/buy-mac" component={ShopMac} />
+            <Route path="/shop/buy-iphone" component={ShopPhones} />
+            <Route path="/checkout" component={ProductDetailGenaral} />
+            <Route path="/shop/buy-ipad" component={ShopIpads} />
 
-      <BrowserRouter>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/shop/buy-mac" component={ShopMac} />
-          <Route path="/shop/buy-iphone" component={ShopPhones} />
-          <Route
-            path="/checkout"
-            component={ProductDetailGenaral}
-          />
-          <Route path="/shop/buy-ipad" component={ShopIpads} />
-          <Route path="/shop/buy-watch" component={shopWatch} />
-          <Route path="/ban" component={ productDetail }/>
-        </Switch>
-        <Footer />
-      </BrowserRouter>
+            <Route path="/shop/buy-watch" component={shopWatch} />
+            <Route path="/ban/:id" component={productDetail} />
+            <Route path="/tinhtien" component={Checkout} />
+            {/* <Route path="/sign-up" component={SignUp} /> */}
+          </Switch>
+          <Footer />
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
