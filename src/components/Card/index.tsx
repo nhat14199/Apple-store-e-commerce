@@ -4,15 +4,18 @@ interface MyComponentProps {
   data: any;
   title: string;
   titleTwo: string;
+  type : number
 }
 const Card: React.FC<MyComponentProps> = (props: any) => {
+  const { data, title, titleTwo , type } = props;
+  console.log("type " , type);
+  
 
-
-  const { data, title, titleTwo } = props;
   return (
     <div>
       <div className="text-left pl-[320px] flex">
-        <h1 className="text-3xl font-semibold pr-2">{title}</h1>{" "}
+        <h1 className="text-3xl font-semibold pr-2">{title}</h1>
+        {""}
         <h1 className="text-3xl font-semibold text-slate-500"> {titleTwo}</h1>
       </div>
       <div
@@ -56,7 +59,7 @@ const Card: React.FC<MyComponentProps> = (props: any) => {
                   <span className="max-w-[250px] text-sm" key={index}>
                     {e.price}
                   </span>
-                  <a href={`/checkout`}>
+                  <a href={type === 1 ? `/check-out-mac/${e?._id}` : `/checkout/${e?._id}`}>
                     <button className="bg-blue-500 w-14 h-8 p-1 text-white font-light text-center rounded-3xl cursor-pointer hover:bg-blue-600">
                       Buy
                     </button>

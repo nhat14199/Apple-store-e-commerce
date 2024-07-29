@@ -310,6 +310,7 @@ export const shopWatch = () => {
       <ShopTittle data={data} title={"Shop Apple Watch "} />
       <Card
         data={dataAppleWatch}
+        type={0}
         title={"All models."}
         titleTwo={" Take your pick."}
       />
@@ -319,6 +320,7 @@ export const shopWatch = () => {
         titleTwo={" Find what works for you."}
       />
       <Card
+        type={0}
         data={Planet}
         title={"Planet-friendly pairings."}
         titleTwo={"Shop featured carbon neutral combinations."}

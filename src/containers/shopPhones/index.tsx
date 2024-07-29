@@ -1,10 +1,14 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import ShopTittle from "../../components/ShopTittle";
 import Card from "../../components/Card";
 import CardShapeSquare from "../../components/Card/CardShapeSquare";
 import ShapeSquare from "../../components/Card/ShapeSquare";
+import axios from "axios";
+import { base_url } from "../../constant/baseUrl";
 
-export const shopPhones = () => {
+export const ShopPhones = () => {
+  const [isLoading, setisLoading] = useState(false);
+  const [phonesData, setPhonesData] = useState<any>([]);
   const data = [
     { title: " All Models" },
     { title: " Shopping Guides" },
@@ -16,16 +20,23 @@ export const shopPhones = () => {
   ];
   const dataIphone = [
     {
-      id: "909813",
       name: "iPhone 15 Pro & iPhone 15 Pro Max",
       price:
         " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
+      brand1: [
+        { name: "iPhone 15 ", price: "999 $" },
+        { name: "iPhone 15 pro ", price: "1299 $" },
+      ],
+
       image:
         "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-iphone15prohero-202309?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1693086290312",
     },
     {
       name: "iPhone 14 & iPhone 14 Plus",
-      id: "909813",
+      brand1: [
+        { name: "iPhone 14 ", price: "899 $" },
+        { name: "iPhone 14 pro ", price: "1199 $" },
+      ],
       price:
         " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
       image:
@@ -33,7 +44,11 @@ export const shopPhones = () => {
     },
     {
       name: "iPhone 14 Pro & iPhone 14 Pro Max",
-      id: "909813",
+      brand1: [
+        { name: "iPhone 14 ", price: "899 $" },
+        { name: "iPhone 14 pro ", price: "1199 $" },
+      ],
+
       price:
         " From $799or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
       image:
@@ -41,7 +56,11 @@ export const shopPhones = () => {
     },
     {
       name: "iPhone 14 & iPhone 14 Plus",
-      id: "909813",
+      brand1: [
+        { name: "iPhone 14 ", price: "899 $" },
+        { name: "iPhone 14 pro ", price: "1199 $" },
+      ],
+
       price:
         " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
       image:
@@ -49,7 +68,11 @@ export const shopPhones = () => {
     },
     {
       name: "iPhone 13 mini & iPhone 13",
-      id: "909813",
+      brand1: [
+        { name: "iPhone 13 ", price: "899" },
+        { name: "iPhone 13 pro ", price: "1199" },
+      ],
+
       price:
         " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
       image:
@@ -57,7 +80,11 @@ export const shopPhones = () => {
     },
     {
       name: "iPhone 12",
-      id: "909813",
+      brand1: [
+        { name: "iPhone 12 ", price: "899 $" },
+        { name: "iPhone 12 pro ", price: "1199 $" },
+      ],
+
       price:
         " From $999or $41.62/mo.per month for 24 mo.months before trade‑inFootnote*",
       image:
@@ -278,11 +305,30 @@ export const shopPhones = () => {
       type: 2,
     },
   ];
+  const getAllProducts = async () => {
+    setisLoading(true);
+    try {
+      setisLoading(true);
+      const resp = await axios.get(`${base_url}phones`);
+
+      setPhonesData(resp.data);
+      setisLoading(false);
+    } catch (error) {
+      console.log(error);
+      setisLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
   return (
     <div>
       <ShopTittle data={data} title={"Shop iPhone"} />
       <Card
-        data={dataIphone}
+        type={2}
+        data={phonesData}
         title={"All models."}
         titleTwo={" Take your pick."}
       />
@@ -315,4 +361,4 @@ export const shopPhones = () => {
   );
 };
 
-export default memo(shopPhones);
+export default memo(ShopPhones);

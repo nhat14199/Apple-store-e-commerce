@@ -239,6 +239,7 @@ export const shopIpad = () => {
     <div className="bg-slate-50">
       <ShopTittle data={data} title={"Shop Ipad"} />
       <Card
+        type={0}
         data={dataIpad}
         title={"All models. "}
         titleTwo={"Take your pick."}

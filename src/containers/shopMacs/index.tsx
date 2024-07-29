@@ -1,11 +1,15 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import ShopTittle from "../../components/ShopTittle";
 import Card from "../../components/Card";
 import CardShapeSquare from "../../components/Card/CardShapeSquare";
 import ShapeSquare from "../../components/Card/ShapeSquare";
 import MediumCard from "../../components/Card/MediumCard";
+import axios from "axios";
+import { base_url } from "../../constant/baseUrl";
 
-export const shopMac = () => {
+export const ShopMac = () => {
+  const [isLoading, setisLoading] = useState(false);
+  const [macData, setMacData] = useState<any>([]);
   const data = [
     { title: " All Models" },
     { title: " Shopping Guides" },
@@ -307,45 +311,74 @@ export const shopMac = () => {
     },
   ];
 
+  const getAllProducts = async () => {
+    setisLoading(true);
+    try {
+      setisLoading(true);
+      const resp = await axios.get(`${base_url}macs`);
+      console.log("resp", resp);
+      setMacData(resp.data);
+      setisLoading(false);
+    } catch (error) {
+      console.log(error);
+      setisLoading(false);
+    }
+  };
+
+
+  console.log("macData" , macData);
+  
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
   return (
-    <div>
-      <ShopTittle data={data} title={"Shop Mac"} />
-      <Card
-        data={dataMac}
-        title={"All models. "}
-        titleTwo={"Take your pick."}
-      />
-      <CardShapeSquare
-        data={whenever}
-        title={"The Apple experience. "}
-        titleTwo={"Do even more with Apple products and services."}
-      />
-      <CardShapeSquare
-        data={Ways}
-        title={"Ways to save."}
-        titleTwo={"Find what works for you."}
-      />
-      <ShapeSquare
-        data={Accessories}
-        titleOne={"Accessories"}
-        titleTwo={"Made for Mac."}
-      />
-      <CardShapeSquare
-        data={Setup}
-        title={"Setup and support."}
-        titleTwo={"Our Specialists are here to help."}
-      />
-      <CardShapeSquare
-        data={theMac}
-        title={"The Mac experience."}
-        titleTwo={"Designed to connect with everything Apple.."}
-      />
-      <MediumCard
-        data={newData}
-        titleOne={"Special stores. "}
-        titleTwo={"Exclusive savings for businesses, school, and more."}
-      />
-    </div>
+    <>
+      {isLoading === true ? (
+        <div className="">...Loading</div>
+      ) : (
+        <div>
+          <ShopTittle data={data} title={"Shop Mac"} />
+          <Card
+            data={macData}
+            type={1}
+            title={"All models. "}
+            titleTwo={"Take your pick."}
+          />
+          <CardShapeSquare
+            data={whenever}
+            title={"The Apple experience. "}
+            titleTwo={"Do even more with Apple products and services."}
+          />
+          <CardShapeSquare
+            data={Ways}
+            title={"Ways to save."}
+            titleTwo={"Find what works for you."}
+          />
+          <ShapeSquare
+            data={Accessories}
+            titleOne={"Accessories"}
+            titleTwo={"Made for Mac."}
+          />
+          <CardShapeSquare
+            data={Setup}
+            title={"Setup and support."}
+            titleTwo={"Our Specialists are here to help."}
+          />
+          <CardShapeSquare
+            data={theMac}
+            title={"The Mac experience."}
+            titleTwo={"Designed to connect with everything Apple.."}
+          />
+          <MediumCard
+            data={newData}
+            titleOne={"Special stores. "}
+            titleTwo={"Exclusive savings for businesses, school, and more."}
+          />
+        </div>
+      )}
+    </>
   );
 };
-export default memo(shopMac);
+export default memo(ShopMac);

@@ -1,0 +1,12 @@
+.background-div {
+    background-image: url('../../assets/images/bg-sign-in-basic.jpeg');
+    background-size: cover; /* Điều chỉnh kích thước hình ảnh */
+    background-position: center; /* Đặt hình ảnh ở giữa */
+  }
+
+.background-signUp {
+    background-image: url('../../assets/images/bg-sign-up-cover.jpeg');
+    background-size: cover; /* Điều chỉnh kích thước hình ảnh */
+    background-position: center; /* Đặt hình ảnh ở giữa */
+}  
+  

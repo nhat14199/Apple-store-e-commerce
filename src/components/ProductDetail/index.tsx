@@ -1,13 +1,53 @@
-import React, { memo } from "react";
+import axios from "axios";
+import React, { memo, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { base_url } from "../../constant/baseUrl";
 
+interface props {}
 
-interface props {
+export const ProductDetail = () => {
+  const { id }: any = useParams();
+  const [isLoading, setisLoading] = useState(false);
+  const [macsData, setMacsData] = useState<any>([]);
+  const [isActive, setIsActive] = useState<number>(0);
+  const [storage, setStorage] = useState<number>(0);
+  const [isColor, setIsColor] = useState<number>(0);
+  const [price1, setPrice1] = useState<number>(0);
+  const [price2, setPrice2] = useState<number>(0);
+  const handleClick = (index: number) => {
+    setIsActive(index);
+  };
 
-}
+  const handleChooseStorage = (index: number) => {
+    setStorage(index);
+  };
+  const handleChooseColor = (index: number) => {
+    setIsColor(index);
+  };
 
-export const productDetail = () => {
+  const getProductsDetail = async () => {
+    setisLoading(true);
+    try {
+      setisLoading(true);
+      const resp = await axios.get(`${base_url}macs/${id}`);
+      setMacsData(resp.data);
+      setisLoading(false);
+    } catch (error) {
+      console.log(error);
+      setisLoading(false);
+    }
+  };
+
+  console.log("price1", price1);
+  console.log("price2", price2);
+  console.log("macsData", macsData);
+
+  useEffect(() => {
+    getProductsDetail();
+  }, []);
+
   return (
-    <div>
+    <div className="pt-20">
       <div className="w-full py-5">
         <div className="mx-80  text-left">
           <div className="text-red-600 text-lg">New</div>
@@ -58,7 +98,7 @@ export const productDetail = () => {
           </div>
           <div className="w-1/2 text-left ">
             <div className="text-2xl font-semibold ">
-              Customize your 15-inch MacBook Air - Midnight
+              Customize your {macsData.name}
             </div>
             <p className="text-sm font-normal py-1 pt-2">
               Apple M2 chip with 8-core CPU, 10-core GPU, 16-core Neural Engine
@@ -87,30 +127,38 @@ export const productDetail = () => {
               <a href="" className="text-blue-500">
                 How much memory is right for you ?
               </a>
-              <div className=" border-[2px] cursor-pointer border-blue-500 py-8 px-3 text-lg font-medium rounded-lg mt-4">
-                8GB unified memory{" "}
-              </div>
-              <div className=" border-[1px] cursor-pointer border-gray-500 py-8 px-3 text-lg font-medium rounded-lg mt-4">
-                16GB unified memory{" "}
-              </div>
-              <div className=" border-[1px] cursor-pointer border-gray-500 py-8 px-3 text-lg font-medium rounded-lg mt-4">
-                24GB unified memory{" "}
-              </div>
+              {macsData.memory?.map((e: any, i: number) => (
+                <div
+                  className={` border-[2px] cursor-pointer hover:border-blue-500 py-8 px-3 text-lg font-medium rounded-lg mt-4 ${
+                    isActive === i ? "border-blue-600 " : ""
+                  }`}
+                  onClick={() => {
+                    handleClick(i);
+                    setPrice1(+e.price);
+                  }}
+                >
+                  {e.quantity}
+                </div>
+              ))}
             </div>
             <div className="text-lg font-semibold mt-5">Storage</div>
             <div className="text-base font-normal mt-1">
               <a href="" className="text-blue-500">
                 How much storage is right for you ?
               </a>
-              <div className=" border-[2px] cursor-pointer border-blue-500 py-8 px-3 text-lg font-medium rounded-lg mt-4">
-                256GB SSD storage
-              </div>
-              <div className=" border-[1px] cursor-pointer border-gray-500 py-8 px-3 text-lg font-medium rounded-lg mt-4">
-                512GB SSD storage
-              </div>
-              <div className=" border-[1px] cursor-pointer border-gray-500 py-8 px-3 text-lg font-medium rounded-lg mt-4">
-                1TB SSD storage
-              </div>
+              {macsData.storage?.map((e: any, i: number) => (
+                <div
+                  className={` border-[2px] cursor-pointer hover:border-blue-600  py-8 px-3 text-lg font-medium rounded-lg mt-4 ${
+                    storage === i ? "border-blue-600 " : ""
+                  }`}
+                  onClick={() => {
+                    handleChooseStorage(i);
+                    setPrice2(+e.price);
+                  }}
+                >
+                  {e.quantity} SSD storage
+                </div>
+              ))}
             </div>
             <div className="text-lg font-semibold mt-5">Keyboard Language </div>
             <div className="text-base font-normal mt-1">
@@ -191,9 +239,10 @@ export const productDetail = () => {
           </div>
           <div className="w-1/2 pt-8 flex ">
             <div className="w-2/3">
-              <div className="text-xl text-left px-4">
+              <div className="text-xl text-left px-4 text-red-500 font-normal">
                 {" "}
-                $1,299.00 or $108.25/mo.per month for 12 mo.monthsFootnote*
+                $ {price1 + price2} or $108.25/mo.per month for 12
+                mo.monthsFootnote*
               </div>
               <div className="ml-2 text-sm font-normal pt-[2px] text-start">
                 {" "}
@@ -203,9 +252,11 @@ export const productDetail = () => {
               </div>
             </div>
             <div className="w-1/3">
-              <button className="bg-blue-600 px-6 py-2 text-white rounded-md hover:bg-blue-500">
-                Add to bag
-              </button>
+              <a href={`/pay/${price1 + price2}`}>
+                <button className="bg-blue-600 px-6 py-2 text-white rounded-md hover:bg-blue-500">
+                  Continue
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -214,4 +265,4 @@ export const productDetail = () => {
   );
 };
 
-export default memo(productDetail);
+export default memo(ProductDetail);

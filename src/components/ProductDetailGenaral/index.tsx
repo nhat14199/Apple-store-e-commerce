@@ -1,10 +1,49 @@
-import React, { memo } from "react";
+import axios from "axios";
+import React, { memo, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { base_url } from "../../constant/baseUrl";
 
 export const ProductDetailGenaral = () => {
+  const { id }: any = useParams();
+  const [isLoading, setisLoading] = useState(false);
+  const [phonesData, setPhonesData] = useState<any>([]);
+  const [isActive, setIsActive] = useState<number>(0);
+  const [storage, setStorage] = useState<number>(0);
+  const [isColor, setIsColor] = useState<number>(0);
+  const [price1, setPrice1] = useState<number>(0);
+  const [price2, setPrice2] = useState<number>(0);
+  const handleClick = (index: number) => {
+    setIsActive(index);
+  };
+
+  const handleChooseStorage = (index: number) => {
+    setStorage(index);
+  };
+  const handleChooseColor = (index: number) => {
+    setIsColor(index);
+  };
+
+  const getProductsDetail = async () => {
+    setisLoading(true);
+    try {
+      setisLoading(true);
+      const resp = await axios.get(`${base_url}phones/${id}`);
+      setPhonesData(resp.data);
+      setisLoading(false);
+    } catch (error) {
+      console.log(error);
+      setisLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getProductsDetail();
+  }, []);
+
   return (
-    <div className="w-full mt-20">
+    <div className="pt-20">
       <div className="text-start max-w-7xl px-4 mx-auto text-4xl font-medium">
-        Buy iPhone 14
+        Buy {phonesData.name}
         <div className="text-xs font-light mt-1">
           {" "}
           From $699 or $29.12/mo.per month for 24 mo.monthsFootnote*
@@ -35,8 +74,8 @@ export const ProductDetailGenaral = () => {
                     </svg>
                   </a>
                   <img
-                    className="object-cover w-full"
-                    src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-1inch-starlight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1661027204398"
+                    className="object-cover w-96 mx-auto h-96 z-0 overflow-hidden"
+                    src={phonesData?.image}
                   />
                   <a
                     className="absolute right-0 transform lg:mr-2 top-1/2 translate-1/2"
@@ -57,52 +96,7 @@ export const ProductDetailGenaral = () => {
                     </svg>
                   </a>
                 </div>
-                {/* <div className="flex-wrap hidden -mx-2 md:flex">
-                  <div className="w-1/2 p-2 sm:w-1/4">
-                    <a
-                      className="block border border-transparent hover:border-blue-400"
-                      href="#"
-                    >
-                      <img
-                        className="object-cover w-full lg:h-32"
-                        src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-1inch-starlight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1661027204398"
-                      />
-                    </a>
-                  </div>
-                  <div className="w-1/2 p-2 sm:w-1/4">
-                    <a
-                      className="block border border-transparent hover:border-blue-400"
-                      href="#"
-                    >
-                      <img
-                        className="object-cover w-full lg:h-32"
-                        src="https://i.postimg.cc/prW7DGkK/R-14.png"
-                      />
-                    </a>
-                  </div>
-                  <div className="w-1/2 p-2 sm:w-1/4">
-                    <a
-                      className="block border border-transparent hover:border-blue-400"
-                      href="#"
-                    >
-                      <img
-                        className="object-cover w-full lg:h-32"
-                        src="https://i.postimg.cc/prW7DGkK/R-14.png"
-                      />
-                    </a>
-                  </div>
-                  <div className="w-1/2 p-2 sm:w-1/4">
-                    <a
-                      className="block border border-transparent hover:border-blue-400"
-                      href="#"
-                    >
-                      <img
-                        className="object-cover w-full lg:h-32"
-                        src="https://i.postimg.cc/prW7DGkK/R-14.png"
-                      />
-                    </a>
-                  </div>
-                </div> */}
+
                 <div className="px-6 pb-6 mt-6 border-t border-gray-300 dark:border-gray-400 ">
                   <div className="flex items-center justify-center mt-6">
                     <span className="mr-3">
@@ -139,29 +133,24 @@ export const ProductDetailGenaral = () => {
                   <h2 className="max-w-xl mt-2 mb-4 text-5xl font-bold md:text-2xl font-heading dark:text-gray-300">
                     Model. Which is best for you?
                   </h2>
-                  <div className="mt-4  w-full p-4 rounded-lg border-[2px] hover:border-blue-600 flex justify-around cursor-pointer">
-                    <div className="w-1/2">
-                      {" "}
-                      Iphone 15 <div className="text-xs">
-                        6.1 inch display
+                  {phonesData.brand1?.map((e: any, i: number) => (
+                    <div
+                      className={`mt-4  w-full p-4 rounded-lg border-[2px] hover:border-blue-600  flex justify-around cursor-pointer ${
+                        isActive === i ? "border-blue-600 " : ""
+                      }`}
+                      onClick={() => {
+                        handleClick(i);
+                        setPrice1(+e.price.replace("$", ""));
+                      }}
+                    >
+                      <div className="w-1/2">
+                        {e.name}
+                        <div className="text-xs">6.1 inch display</div>{" "}
                       </div>{" "}
-                    </div>{" "}
-                    <span className="w-1/2 text-xs text-end">
-                      {" "}
-                      From $799 or $33.29/mo.per month
-                    </span>
-                  </div>
-                  <div className="mt-4  w-full  p-5  rounded-lg border-[2px] hover:border-blue-600 cursor-pointer flex justify-around">
-                    <div className="w-1/2">
-                      {" "}
-                      Iphone 15 Plus{" "}
-                      <div className="text-xs">6.1 inch display</div>{" "}
-                    </div>{" "}
-                    <span className="w-1/2 text-xs text-end">
-                      {" "}
-                      From $799 or $33.29/mo.per month
-                    </span>
-                  </div>
+                      <span className="w-1/2 text-xs text-end"> {e.price}</span>
+                    </div>
+                  ))}
+
                 </div>
                 <div>
                   <div className="text-lg font-medium text-left  mb-2 mt-40">
@@ -169,25 +158,53 @@ export const ProductDetailGenaral = () => {
                     <span>Pick your favorite.</span>
                   </div>
                   <div className="grid grid-cols-2 gap-2 pb-4 lg:grid-cols-6 lg:gap-2 dark:border-gray-600">
-                    <span className="w-10 h-10 rounded-3xl border-[2px] border-blue-600 p-[5px] ">
+                    <span
+                      className={`"w-10 h-10  cursor-pointer  ${
+                        isColor === 1
+                          ? "border-blue-600 border-[4px] p-1 rounded-3xl pb-2   "
+                          : ""
+                      } p-[5px] "`}
+                      onClick={() => handleChooseColor(1)}
+                    >
                       <img
                         src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/finish-pink-202309?wid=204&amp;hei=204&amp;fmt=jpeg&amp;qlt=90&amp;.v=1692831506843"
                         alt=""
                       />
                     </span>
-                    <span className="w-10 h-10 rounded-3xl  ">
+                    <span
+                      className={`"w-10 h-10 rounded-3xl border-[3px]  cursor-pointer  ${
+                        isColor === 2
+                          ? "border-blue-600 border-[4px] p-1 rounded-3xl pb-2   "
+                          : ""
+                      } p-[5px]"`}
+                      onClick={() => handleChooseColor(2)}
+                    >
                       <img
                         src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/finish-blue-202309?wid=204&amp;hei=204&amp;fmt=jpeg&amp;qlt=90&amp;.v=1692831507035"
                         alt=""
                       />
                     </span>
-                    <span className="w-10 h-10 rounded-3xl  ">
+                    <span
+                      className={`"w-10 h-10 rounded-3xl border-[3px]  cursor-pointer  ${
+                        isColor === 3
+                          ? "border-blue-600 border-[4px] p-1 rounded-3xl pb-2   "
+                          : ""
+                      } p-[5px] "`}
+                      onClick={() => handleChooseColor(3)}
+                    >
                       <img
                         src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/finish-black-202309?wid=204&amp;hei=204&amp;fmt=jpeg&amp;qlt=90&amp;.v=1692831506982"
                         alt=""
                       />
                     </span>
-                    <span className="w-10 h-10 rounded-3xl  ">
+                    <span
+                      className={`"w-10 h-10 rounded-3xl border-[3px]  cursor-pointer  ${
+                        isColor === 4
+                          ? "border-blue-600 border-[4px] p-1 rounded-3xl pb-2   "
+                          : ""
+                      } p-[5px] "`}
+                      onClick={() => handleChooseColor(4)}
+                    >
                       <img
                         src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/finish-pink-202309?wid=204&amp;hei=204&amp;fmt=jpeg&amp;qlt=90&amp;.v=1692831506843"
                         alt=""
@@ -200,39 +217,37 @@ export const ProductDetailGenaral = () => {
                   <h2 className="mb-2 text-lg font-semibold dark:text-gray-400">
                     Storage. How much space do you need?
                   </h2>
-                  <div className="mt-4  w-full p-5 rounded-lg border-[2px] hover:border-blue-600 flex justify-around cursor-pointer">
-                    <div className="w-1/2"> 128 GB</div>{" "}
-                    <span className="w-1/2 text-xs text-end">
-                      {" "}
-                      From $799 or $33.29/mo.per month
-                    </span>
-                  </div>
-                  <div className="mt-4  w-full  p-5  rounded-lg border-[2px] hover:border-blue-600 cursor-pointer flex justify-around">
-                    <div className="w-1/2">256 GB</div>{" "}
-                    <span className="w-1/2 text-xs text-end">
-                      {" "}
-                      From $799 or $33.29/mo.per month
-                    </span>
-                  </div>
-                  <div className="mt-4  w-full  p-5  rounded-lg border-[2px] hover:border-blue-600 cursor-pointer flex justify-around">
-                    <div className="w-1/2">512 GB</div>{" "}
-                    <span className="w-1/2 text-xs text-end">
-                      {" "}
-                      From $799 or $33.29/mo.per month
-                    </span>
-                  </div>
-                  <div className="mt-4  w-full  p-5  rounded-lg border-[2px] hover:border-blue-600 cursor-pointer flex justify-around">
-                    <div className="w-1/2">1 TB</div>{" "}
-                    <span className="w-1/2 text-xs text-end">
-                      {" "}
-                      From $799 or $33.29/mo.per month
-                    </span>
-                  </div>
+                  {phonesData?.storage?.map((e: any, i: number) => (
+                    <div
+                      className={`mt-4  w-full p-4 rounded-lg border-[2px] hover:border-blue-600  flex justify-around cursor-pointer ${
+                        storage === i ? "border-blue-600 " : ""
+                      }`
+                    
+                    }
+                      onClick={() => {
+                        handleChooseStorage(i);
+                        setPrice2(+e.price);
+                      }}
+                    >
+                      <div className="w-1/2"> {e.limit}</div>{" "}
+                      <span className="w-1/2 text-xs text-end">
+                        {" "}
+                        From ${e.price} or $33.29/mo.per month
+                      </span>
+                    </div>
+                  ))}
                 </div>
+
+                <div className=" border-b-2 border-t-2 border-gray-200 text-left  py-4 mt-20 text-blue-800 text-xl font-semibold">
+                  Total price : {price1 + price2} $
+                </div>
+
                 <div className="mt-20 ">
-                  <button className="w-full px-4 py-2 font-bold text-white bg-blue-400 lg:w-96 hover:bg-blue-500">
-                    Continue
-                  </button>
+                  <a href={`/pay/${price1 + price2}`}>
+                    <button className="w-full px-4 py-2 font-bold text-white bg-blue-400 lg:w-96 hover:bg-blue-500">
+                      Continue
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
